@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="The_Coursach.App">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="The_Coursach.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="The_Coursach.Editor" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CEAAAQAAAAECAAgAoEACAAgEQAgAAAAIAACAAAAEABA=</HashCode>
+      <FileName>Pages\Editor.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="The_Coursach.Order" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwBAAABgAEBAAQQBAAAAAUAAEECAAAAAAAKAAAQAAg=</HashCode>
+      <FileName>Pages\Order.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="The_Coursach.Menu">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAIAAAAAAAQAAAAAABAAAQAAAAAAAAA=</HashCode>
+      <FileName>Pages\Order.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="The_Coursach.Staff" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CEBAAQAAAAAQAEgAAAACIAwBQAgAAIAAAAAAAAAAABA=</HashCode>
+      <FileName>Pages\Staff.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="The_Coursach.Statistics" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAIAAABIAkAAAAAAAAIAAgAAAAAAAAAAABIAAAAAAA=</HashCode>
+      <FileName>Pages\Statistics.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="The_Coursach.Main" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAIAEABAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Windows\Main.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="The_Coursach.MsgBox" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Windows\MsgBox.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="The_Coursach.PayWindow" BaseTypeListCollapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAIAAQQIAAAAAUAAAAAAAAAAEAIAQAQAQA=</HashCode>
+      <FileName>Windows\PayWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="The_Coursach.Classes.Employees">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Classes\Employees.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="The_Coursach.Classes.Menu">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAIAAAAAAAQAAAAAABAAAQAAAAAAAAA=</HashCode>
+      <FileName>Classes\Menu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="The_Coursach.Classes.Menus">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAIAAAAAAAQAAAAAABAAAQAAAAAAAAA=</HashCode>
+      <FileName>Classes\Menus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="The_Coursach.Classes.Orders">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAABgAAAEAABAAAQABAAAQAABAAAAAAAAAQA=</HashCode>
+      <FileName>Classes\Orders.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="The_Coursach.Classes.Staff0">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAEAAAAAAAAQABAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Staff0.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="The_Coursach.Properties.Resources">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="The_Coursach.Properties.Settings">
+    <Position X="5.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

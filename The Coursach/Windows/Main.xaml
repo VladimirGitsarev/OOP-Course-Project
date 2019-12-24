@@ -1,0 +1,185 @@
+﻿<Window x:Class="The_Coursach.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:The_Coursach"
+        xmlns:data="using:xBindDataExample.Models"
+        mc:Ignorable="d"
+        Title="Main" Height="690" Width="1050"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        BorderThickness="0" Background="#E0FEEA">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="30"/>
+    </WindowChrome.WindowChrome>
+    <Window.Resources>
+        <ControlTemplate TargetType="Button" x:Key="btnTemplate">
+            <Border x:Name="brdrBtn" BorderThickness="1" BorderBrush="Green" Background="{TemplateBinding Background}" CornerRadius="5" Margin="{TemplateBinding Margin}">
+                <ContentControl x:Name="cntntBtn" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Content="{TemplateBinding Content}" Foreground="White" FontWeight="DemiBold"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="brdrBtn" Property="BorderThickness" Value="2" />
+                    <Setter TargetName="brdrBtn" Property="BorderBrush" Value="Green" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate >
+        <ControlTemplate TargetType="Button" x:Key="btTemplate">
+            <Border x:Name="brdrBtn" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="#3ABB7A">
+                <ContentControl x:Name="cntntBtn" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Content="{TemplateBinding Content}" Foreground="White"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="brdrBtn" Property="BorderThickness" Value="3,0,0,0" />
+                    <Setter TargetName="brdrBtn" Property="BorderBrush" Value="DarkGreen" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="brdrBtn" Property="BorderThickness" Value="3,0,0,0" />
+                    <Setter TargetName="brdrBtn" Property="BorderBrush" Value="Green" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate >
+    </Window.Resources>
+    <Grid ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Background="#37B074" VerticalAlignment="Top" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" >
+            <Image Source="D:\All\Универ\2 курс\ООП\The Coursach\Emblem.png" Margin="10, 0"/>
+            <TextBlock Name="person" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="DemiBold" FontSize="14"/>
+            <TextBlock Name="waiterName" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="DemiBold" FontSize="14"/>
+            <TextBlock Margin="10,0,0,0" Foreground="White" Name="time" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="DemiBold" FontSize="14" Text="Date: "/>
+            <TextBlock Name="timeValue" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="DemiBold" FontSize="14"/>
+        </StackPanel>
+        <Button Content="Logout" Margin="20, 3" Width="150" HorizontalAlignment="Right" Grid.Column="1" Background="#37B074" Template="{DynamicResource btnTemplate}" Click="Button_Click"/>
+        <Button Grid.Row="0" Grid.Column="1" x:Name="close" WindowChrome.IsHitTestVisibleInChrome="True" BorderThickness="0" 
+                HorizontalAlignment="Right"  VerticalAlignment="Top" Click="Close_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="brdr" BorderThickness="2" Background="Transparent" Height="40" Width="40" >
+                        <ContentControl  HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Path Data="M0,0 L20,20 M0,20 L20,0" Stroke="IndianRed" StrokeThickness="3"/>
+                        </ContentControl>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Opacity" Value="0.7" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Opacity" Value="1" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Grid Grid.Column="0" Grid.Row="1" Background="#3ABB7A">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button x:Name="Orders" Content="Orders" Grid.Row="0" Template="{StaticResource btTemplate}" BorderThickness="0" BorderBrush="CornflowerBlue" Click="Orders_Click"/>
+            <Button x:Name="Editor" Content="Menu Editor" Grid.Row="2" Template="{StaticResource btTemplate}" BorderThickness="0" BorderBrush="CornflowerBlue" Click="Orders_Click"/>
+            <Button x:Name="Staff" Content="Staff" Grid.Row="3" Template="{StaticResource btTemplate}" BorderThickness="0" BorderBrush="CornflowerBlue" Click="Orders_Click"/>
+            <Button x:Name="Stats" Content="Statistics" Grid.Row="1" Template="{StaticResource btTemplate}" BorderThickness="0" BorderBrush="CornflowerBlue" Click="Orders_Click"/>
+        </Grid>
+        <Grid x:Name="Start" Grid.Column="1" Grid.Row="1" Margin="20, 20">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Name="Welcome" Text="Welcome, " HorizontalAlignment="Center" FontSize="24" FontWeight="DemiBold" Foreground="Green"/>
+            <TextBlock Grid.Row="1"  HorizontalAlignment="Center" FontSize="22" FontWeight="DemiBold" Foreground="Green">
+                How to use this application
+            </TextBlock>
+            <TextBlock Grid.Row="2"  HorizontalAlignment="Center" FontSize="22" FontWeight="DemiBold" Foreground="Green">
+                Menu
+            </TextBlock>
+            <TextBlock Grid.Row="4"  HorizontalAlignment="Center" FontSize="22" FontWeight="DemiBold" Foreground="Green">
+                Orders
+            </TextBlock>
+            <TextBlock Grid.Row="3"  HorizontalAlignment="Center" FontSize="22"  Foreground="Green">
+                There is a menu on the left side. It is used to switch between different sections.
+            </TextBlock>
+            <TextBlock Grid.Row="5"  HorizontalAlignment="Center" FontSize="18"  Foreground="Green">
+                Section "Orders" allows you to create and manage orders
+            </TextBlock>
+            <TextBlock Grid.Row="6"  HorizontalAlignment="Center" FontSize="18"  Foreground="Green">
+                You can add items to orders and delete them using buttons "Add" and "Delete" and chosing items.  
+            </TextBlock>
+            <TextBlock Grid.Row="7"  HorizontalAlignment="Center" FontSize="18"  Foreground="Green">
+                You can name your order or it will be named automatically
+            </TextBlock>
+            <TextBlock Grid.Row="8"  HorizontalAlignment="Center" FontSize="18"  Foreground="Green">
+                After closing the order "Pay Window" will be shown. Here you enter discount and paid money.
+            </TextBlock>
+            <TextBlock Grid.Row="9"  HorizontalAlignment="Center" FontSize="22" FontWeight="DemiBold" Foreground="Green">
+                Statistics
+            </TextBlock>
+            <TextBlock Grid.Row="10"  HorizontalAlignment="Center" FontSize="18"  Foreground="Green">
+                Section "Statistics" allows you to watch information about your orders and their details.
+            </TextBlock>
+            <TextBlock Grid.Row="11"  HorizontalAlignment="Center" FontSize="18"  Foreground="Green">
+                Waiters can watch only their own statistics. Managers are allowed to track all users statistics.
+            </TextBlock>
+            <TextBlock Grid.Row="12"  HorizontalAlignment="Center" FontSize="18"  Foreground="Green">
+                You can filter statistics data by the date and users or you can watch all statistics.
+            </TextBlock>
+            <TextBlock Grid.Row="13"  HorizontalAlignment="Center" FontSize="22" FontWeight="DemiBold" Foreground="Green">
+                Menu Editor
+            </TextBlock>
+            <TextBlock Grid.Row="14"  HorizontalAlignment="Center" FontSize="18"  Foreground="Green">
+                Section "Menu Editor" alows you to add, delete and edit menu items. Avaliable only for managers.
+            </TextBlock>
+            <TextBlock Grid.Row="15"  HorizontalAlignment="Center" FontSize="18"  Foreground="Green">
+                Select item and click "Delete" button to delete or "Update" button to update menu items.
+            </TextBlock>
+            <TextBlock Grid.Row="16"  HorizontalAlignment="Center" FontSize="18"  Foreground="Green">
+                To add new item click "Plus" button. New window will be shown and you should fill fields with the data.
+            </TextBlock>
+            <TextBlock Grid.Row="17"  HorizontalAlignment="Center" FontSize="22" FontWeight="DemiBold" Foreground="Green">
+                Staff
+            </TextBlock>
+            <TextBlock Grid.Row="18"  HorizontalAlignment="Center" FontSize="18"  Foreground="Green">
+                Section "Staff" alows you to add, delete and edit info about emplyees. Avaliable only for managers.
+            </TextBlock>
+            <TextBlock Grid.Row="19"  HorizontalAlignment="Center" FontSize="18"  Foreground="Green">
+                Select item and click "Delete" button to delete or "Update" button to update staff info.
+            </TextBlock>
+            <TextBlock Grid.Row="20"  HorizontalAlignment="Center" FontSize="18"  Foreground="Green">
+                To add new employee click "Plus" button. Fields will be shown and you should fill it with the data.
+            </TextBlock>
+            
+        </Grid>
+        <Grid x:Name="curWnd" Grid.Column="1" Grid.Row="1"/>
+        <Grid x:Name="ordrWnd" Grid.Column="1" Grid.Row="1" Visibility="Hidden"/>
+        <Grid x:Name="statsWnd" Grid.Column="1" Grid.Row="1" Visibility="Hidden"/>
+    </Grid>
+    
+</Window>

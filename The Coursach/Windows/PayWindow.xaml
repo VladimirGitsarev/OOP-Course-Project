@@ -1,0 +1,111 @@
+﻿<Window x:Class="The_Coursach.PayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:The_Coursach"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Title="PayWindow" Height="575" Width="325"
+        BorderThickness="1" BorderBrush="Black"
+        ResizeMode="NoResize">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="30"/>
+    </WindowChrome.WindowChrome>
+    <Window.Resources>
+        <ControlTemplate TargetType="Button" x:Key="btnTemplate">
+            <Border x:Name="brdrBtn" BorderThickness="1" BorderBrush="Green" Background="{TemplateBinding Background}" CornerRadius="5" Margin="{TemplateBinding Margin}">
+                <ContentControl x:Name="cntntBtn" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Content="{TemplateBinding Content}" Foreground="Green" FontWeight="DemiBold"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="brdrBtn" Property="BorderThickness" Value="2" />
+                    <Setter TargetName="brdrBtn" Property="BorderBrush" Value="Green" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate >
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <StackPanel Background="#37B074" Grid.Row="0">
+            <Image Source="D:\All\Универ\2 курс\ООП\The Coursach\Emblem.png"  HorizontalAlignment="Left" Height="40" Width="70" Margin="10,0"/>
+        </StackPanel>
+        <Grid Grid.Row="1" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition  />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Name="ordrName" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0"  FontSize="22" Foreground="DarkGreen" HorizontalAlignment="Left" Text="Order: " Width="67"/>
+            <TextBlock Name="ordrWaiter" Grid.Row="1" Grid.Column="0" Margin="10,0,0,0" FontSize="22" Foreground="DarkGreen" HorizontalAlignment="Left" Text="Waiter: " Width="74"/>
+            <TextBlock Name="orderName" Grid.Row="0" Grid.Column="1" Margin="10,0,0,0"  FontSize="20" Foreground="DarkGreen" HorizontalAlignment="Left" FontWeight="DemiBold" />
+            <TextBlock Name="orderWaiter" Grid.Row="1" Grid.Column="1" Margin="10,0,0,0" FontSize="20" Foreground="DarkGreen" HorizontalAlignment="Left" FontWeight="DemiBold" />
+        </Grid>
+        <Button Grid.Row="0" x:Name="Close" WindowChrome.IsHitTestVisibleInChrome="True" BorderThickness="0" 
+                HorizontalAlignment="Right" Click="Close_Click" >
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="brdr" BorderThickness="2" Background="Transparent" Height="40" Width="40" >
+                        <ContentControl  HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Path Data="M0,0 L20,20 M0,20 L20,0" Stroke="IndianRed" StrokeThickness="3"/>
+                        </ContentControl>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Opacity" Value="0.7" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Opacity" Value="1" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <StackPanel Grid.Row="5">
+            <Button x:Name="Pay" Content="Calculate" Height="40" Click="Button_Click" Template="{DynamicResource btnTemplate}" Margin="5, 0, 5, 5" Background="Transparent"/>
+        </StackPanel>
+        <DataGrid Grid.Row="3" Name="grid" AutoGenerateColumns="False" Background="White"
+                  Foreground="DarkGreen"  GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="DarkGreen" 
+                  FontSize="20" FontWeight="DemiBold" HeadersVisibility="None" IsReadOnly="True" CanUserResizeColumns="False" 
+                  CanUserSortColumns="False" CanUserResizeRows="False" BorderBrush="WhiteSmoke" BorderThickness="2" RowHeight="30" 
+                  CanUserAddRows="False" CanUserReorderColumns="False" Margin="10" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Name}"  Width="200" Header="Name" />
+                <DataGridTextColumn Binding="{Binding Price}"  Width="50" Header="Price" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Row="4" Margin="9,0,11,10" >
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="1" Text="Total: " Name="TotalText" FontSize="20" VerticalAlignment="Center" Foreground="DarkGreen" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Name="Total" FontSize="20" VerticalAlignment="Center" Foreground="DarkGreen" FontWeight="DemiBold" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Name="inText" FontSize="20" Text="Paid: " VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="DarkGreen"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Name="In"  FontSize="20" Foreground="DarkGreen" FontWeight="DemiBold" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right" Width="70"/>
+            <TextBlock Grid.Row="3" Text="Change: " Grid.ColumnSpan="2" Name="ChangeText" FontSize="20" VerticalAlignment="Center" Foreground="DarkGreen" HorizontalAlignment="Left"/>
+            <TextBlock Grid.Row="3" Grid.Column="1" Name="Change" FontSize="20" VerticalAlignment="Center" Foreground="DarkGreen" FontWeight="DemiBold" HorizontalAlignment="Right" Grid.ColumnSpan="2"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Name="info" FontSize="20" VerticalAlignment="Center" Foreground="IndianRed" FontWeight="DemiBold" HorizontalAlignment="Center" />
+            <TextBlock Grid.Row="0" Text="Discount %: " Grid.ColumnSpan="2" Name="DiscountText" FontSize="20" VerticalAlignment="Center" Foreground="DarkGreen" HorizontalAlignment="Left"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Name="discountIn"  FontSize="20" Foreground="DarkGreen" FontWeight="DemiBold" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right" Width="70"/>
+        </Grid>
+    </Grid>
+</Window>

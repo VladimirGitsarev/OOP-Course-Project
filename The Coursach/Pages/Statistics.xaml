@@ -1,0 +1,167 @@
+﻿<UserControl x:Class="The_Coursach.Statistics"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:The_Coursach"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             IsVisibleChanged="UserControl_IsVisibleChanged">
+    <UserControl.Resources>
+        <ControlTemplate TargetType="Button" x:Key="btnTemplate">
+            <Border x:Name="brdrBtn" BorderThickness="1" BorderBrush="Green" Background="{TemplateBinding Background}" CornerRadius="5" Margin="{TemplateBinding Margin}">
+                <ContentControl x:Name="cntntBtn" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Content="{TemplateBinding Content}" Foreground="Green" FontWeight="DemiBold"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="brdrBtn" Property="BorderThickness" Value="2" />
+                    <Setter TargetName="brdrBtn" Property="BorderBrush" Value="Green" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate >
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition />
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition  Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Text="Employees" FontSize="20" Foreground="Green" FontWeight="DemiBold" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Text="Orders" FontSize="20" Foreground="Green" FontWeight="DemiBold" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Text="Info" FontSize="20" Foreground="Green" FontWeight="DemiBold" HorizontalAlignment="Center"/>
+        <ListBox x:Name="employeesList" Margin="5,0,5,10" Background="Transparent" Foreground="DarkGreen" BorderThickness="2"  
+                 Grid.Row="1" Grid.Column="0"  BorderBrush="WhiteSmoke" FontSize="20" FontWeight="DemiBold" 
+                 HorizontalAlignment="Stretch" SelectionChanged="EmployeesList_SelectionChanged">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border Name="Border" Background="White" Margin="1" Height="50" BorderThickness="1" BorderBrush="WhiteSmoke" CornerRadius="5" >
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="true">
+                                        <Setter TargetName="Border" Property="Background" Value="WhiteSmoke"/>
+                                        <Setter TargetName="Border" Property="BorderBrush" Value="LightGreen" />
+                                        <Setter TargetName="Border" Property="BorderThickness" Value="1" />
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter TargetName="Border" Property="BorderBrush" Value="LightGreen" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+        <ListBox x:Name="ordersList" Margin="5,0,5,10" Background="Transparent" Foreground="DarkGreen" BorderThickness="2"  
+                 Grid.Row="1" Grid.Column="1"  BorderBrush="WhiteSmoke" FontSize="20" FontWeight="DemiBold" 
+                 HorizontalAlignment="Stretch" SelectionChanged="OrdersList_SelectionChanged">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border Name="Border" Background="White" Margin="1" Height="50" BorderThickness="1" BorderBrush="WhiteSmoke" CornerRadius="5" >
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="true">
+                                        <Setter TargetName="Border" Property="Background" Value="WhiteSmoke"/>
+                                        <Setter TargetName="Border" Property="BorderBrush" Value="LightGreen" />
+                                        <Setter TargetName="Border" Property="BorderThickness" Value="1" />
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter TargetName="Border" Property="BorderBrush" Value="LightGreen" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+        <Grid Grid.Row="1" Grid.Column="2" Visibility="Hidden" Name ="Stats" Margin="5,0,5,10">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" FontSize="20" Foreground="Green" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Person Id: "/>
+            <TextBlock Name="IdInfo" Grid.Row="1" Background="Transparent" Foreground="Green" FontWeight="DemiBold" FontSize="60" TextAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock Grid.Row="2" FontSize="20" Foreground="Green" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Orders Number: "/>
+            <TextBlock Name="OrdersInfo" Grid.Row="3" Background="Transparent" Foreground="Green" FontWeight="DemiBold" FontSize="60" TextAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock Grid.Row="4" FontSize="20" Foreground="Green" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Earnings: "/>
+            <TextBlock Name="EarningsInfo" Grid.Row="5" Background="Transparent" Foreground="Green" FontWeight="DemiBold" FontSize="60" TextAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock Grid.Row="6" FontSize="20" Foreground="Green" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Average Bill: "/>
+            <TextBlock Name="AverageInfo" Grid.Row="7" Background="Transparent" Foreground="Green" FontWeight="DemiBold" FontSize="60" TextAlignment="Center" VerticalAlignment="Top"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="2" Name="orderStats" Visibility="Hidden" Margin="5,0,5,10">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Order Id: " FontSize="20" Foreground="Green" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Order Name: " FontSize="20" Foreground="Green" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Person Id: " FontSize="20" Foreground="Green" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Name: " FontSize="20" Foreground="Green" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Surname: " FontSize="20" Foreground="Green" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Total: " FontSize="20" Foreground="Green" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="Paid: " FontSize="20" Foreground="Green" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="7" Grid.Column="0" Text="Change: " FontSize="20" Foreground="Green" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="8" Grid.Column="0" Text="Date: " FontSize="20" Foreground="Green" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="9" Grid.Column="0" Text="Time: " FontSize="20" Foreground="Green" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock Name="orderId" Grid.Row="0" Grid.Column="1" FontSize="20" Foreground="Green" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Name="orderName" Grid.Row="1" Grid.Column="1" FontSize="20" Foreground="Green" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Name="orderPersonId" Grid.Row="2" Grid.Column="1" FontSize="20" Foreground="Green" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Name="orderWaiterName" Grid.Row="3" Grid.Column="1" FontSize="20" Foreground="Green" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Name="orderWaiterSurname" Grid.Row="4" Grid.Column="1" FontSize="20" Foreground="Green" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Name="orderTotal" Grid.Row="5" Grid.Column="1" FontSize="20" Foreground="Green" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Name="orderPaid" Grid.Row="6" Grid.Column="1"  FontSize="20" Foreground="Green" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Name="orderChange" Grid.Row="7" Grid.Column="1" FontSize="20" Foreground="Green" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Name="orderDate" Grid.Row="8" Grid.Column="1" FontSize="20" Foreground="Green" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Name="orderTime" Grid.Row="9" Grid.Column="1" FontSize="20" Foreground="Green" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.4*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.4*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="From:" FontSize="20" Foreground="Green" HorizontalAlignment="Right"/>
+            <DatePicker Grid.Column="1" Name="from" Foreground="Green" FontSize="20" HorizontalContentAlignment="Center" BorderThickness="0"/>
+            <TextBlock Grid.Column="2" Text="To:" FontSize="20" Foreground="Green" HorizontalAlignment="Right"/>
+            <DatePicker Grid.Column="3" Name="to" Foreground="Green" FontSize="20" HorizontalContentAlignment="Center" BorderThickness="0"/>
+            <Button Grid.Row="2" Grid.Column="4" Name = "Show" Background="Transparent" Content="Sort By Date" Margin="5,2" Click="Show_Click" Template="{StaticResource btnTemplate}"/>
+        </Grid>
+        <Button Grid.Row="2" Grid.Column="2" Name="closeOrder" Template="{DynamicResource btnTemplate}" Content="Close Info" Background="Transparent" Margin="5,2" Visibility="Hidden" Click="CloseOrder_Click"/>
+        <StackPanel HorizontalAlignment="Center"  Grid.Row="1" Orientation="Horizontal"/>
+    </Grid>
+</UserControl>
